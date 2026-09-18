@@ -1,5 +1,23 @@
 
 
+// 04. Maximum Depth of Binary Tree
+
+var maxDepth = function(root) {
+
+    if (root === null) {
+        return 0;
+    }
+
+    let leftDepth = maxDepth(root.left);
+    let rightDepth = maxDepth(root.right);
+
+    return Math.max(leftDepth, rightDepth) + 1;
+};
+
+
+
+
+
 // 03. Search Insert Position
 
 var searchInsert = function(nums, target) {
@@ -25,7 +43,7 @@ var searchInsert = function(nums, target) {
     return left;
 };
 
-console.log(searchInsert([1, 3, 5, 6], 5)); // 2
+
 
 
 
