@@ -1,4 +1,28 @@
 
+// 05. Invert Binary Tree
+var invertTree = function(root) {
+
+    if (root === null) {
+        return null;
+    }
+
+    // Swap left and right
+    let temp = root.left;
+    root.left = root.right;
+    root.right = temp;
+
+    // Invert both subtrees
+    invertTree(root.left);
+    invertTree(root.right);
+
+    return root;
+};
+
+
+
+
+
+
 
 // 04. Maximum Depth of Binary Tree
 
