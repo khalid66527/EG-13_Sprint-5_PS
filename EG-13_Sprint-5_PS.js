@@ -1,5 +1,35 @@
 
 
+// 07. Rotate Array
+var rotate = function(nums, k) {
+    k = k % nums.length;
+
+    // Reverse entire array
+    nums.reverse();
+
+    // Reverse first k elements
+    let left = 0;
+    let right = k - 1;
+
+    while (left < right) {
+        [nums[left], nums[right]] = [nums[right], nums[left]];
+        left++;
+        right--;
+    }
+
+    // Reverse remaining elements
+    left = k;
+    right = nums.length - 1;
+
+    while (left < right) {
+        [nums[left], nums[right]] = [nums[right], nums[left]];
+        left++;
+        right--;
+    }
+};
+
+
+
 
 
 // 06. Product of Array Except Self
