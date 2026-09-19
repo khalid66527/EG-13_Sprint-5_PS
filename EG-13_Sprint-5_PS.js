@@ -1,5 +1,33 @@
 
 
+
+// 10. Daily Temperatures 
+var dailyTemperatures = function(temperatures) {
+    let result = new Array(temperatures.length).fill(0);
+    let stack = [];
+
+    for (let i = 0; i < temperatures.length; i++) {
+
+        while (
+            stack.length > 0 &&
+            temperatures[i] > temperatures[stack[stack.length - 1]]
+        ) {
+            let previousDay = stack.pop();
+
+            result[previousDay] = i - previousDay;
+        }
+
+        stack.push(i);
+    }
+
+    return result;
+};
+
+
+
+
+
+
 // 09. Continuous Subarray Sum 
 var checkSubarraySum = function(nums, k) {
     let remainderMap = new Map();
