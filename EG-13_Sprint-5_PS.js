@@ -1,4 +1,40 @@
 
+
+// 09. Continuous Subarray Sum 
+var checkSubarraySum = function(nums, k) {
+    let remainderMap = new Map();
+
+    remainderMap.set(0, -1);
+
+    let sum = 0;
+
+    for (let i = 0; i < nums.length; i++) {
+        sum += nums[i];
+
+        let remainder = sum % k;
+
+        if (remainderMap.has(remainder)) {
+            let previousIndex = remainderMap.get(remainder);
+
+            // At least 2 elements
+            if (i - previousIndex >= 2) {
+                return true;
+            }
+        } else {
+            remainderMap.set(remainder, i);
+        }
+    }
+
+    return false;
+};
+
+
+
+
+
+
+
+
 // 08. Min Stack  
 
 var MinStack = function() {
@@ -35,10 +71,10 @@ MinStack.prototype.getMin = function() {
 var rotate = function(nums, k) {
     k = k % nums.length;
 
-    // Reverse entire array
+
     nums.reverse();
 
-    // Reverse first k elements
+
     let left = 0;
     let right = k - 1;
 
@@ -48,7 +84,7 @@ var rotate = function(nums, k) {
         right--;
     }
 
-    // Reverse remaining elements
+  
     left = k;
     right = nums.length - 1;
 
